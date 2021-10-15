@@ -309,7 +309,7 @@ class Encoder:
 
         # Prepend the prefix string to the column names
         prefix = prefix if prefix else self.__name__
-        encoded.columns = [prefix + '_' + str(c) for c in encoded.columns.tolist()]
+        encoded.columns = [prefix + '_' + str(c) if prefix + '_' not in str(c) else str(c) for c in encoded.columns.tolist()]
 
         # Scale
         if scaled:
@@ -318,5 +318,7 @@ class Encoder:
         # Apply PCA
         if pca:
             encoded = self.pca_transform(encoded)
+
+        encoded.columns = [prefix + '_' + str(c) if prefix + '_' not in str(c) else str(c) for c in encoded.columns.tolist()]
 
         return encoded
