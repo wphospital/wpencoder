@@ -6,7 +6,7 @@ def readme():
 
 setup(
     name='wpencoder',
-    version='0.2',
+    version='0.3',
     description='Internal package for encoding occurrences',
     long_description=readme(),
     classifiers=[

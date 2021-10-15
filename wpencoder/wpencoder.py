@@ -202,7 +202,7 @@ class Encoder:
         summarized = self.summarize_df(self.df, scaled=False, pca=False)
 
         # Fit the PCA vectorizer
-        self.pca.fit(summarized.values)
+        self.pca.fit(summarized)
 
     def pca_transform(self, summarized_df):
         """Transforms a new dataframe using the class' fitted PCA transformer
