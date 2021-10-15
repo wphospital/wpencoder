@@ -307,6 +307,10 @@ class Encoder:
         # Fill in any missing ids from the id list
         encoded = self.fill_ids(encoded.groupby(self.id_column).agg(sum))
 
+        # Prepend the prefix string to the column names
+        prefix = prefix if prefix else self.__name__
+        encoded.columns = [prefix + '_' + str(c) for c in encoded.columns.tolist()]
+
         # Scale
         if scaled:
             encoded = self.scaler_transform(encoded)
@@ -314,9 +318,5 @@ class Encoder:
         # Apply PCA
         if pca:
             encoded = self.pca_transform(encoded)
-
-        # Prepend the prefix string to the column names
-        prefix = prefix if prefix else self.__name__
-        encoded.columns = [prefix + '_' + str(c) for c in encoded.columns.tolist()]
 
         return encoded
