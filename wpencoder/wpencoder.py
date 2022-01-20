@@ -120,7 +120,7 @@ class Encoder:
         df = self.df.copy() if df is None else df.copy()
 
         # Reindex the dataframe using the id list
-        if self.ids:
+        if self.ids is not None:
             df = df.reindex(self.ids).fillna(0)
 
         return df
