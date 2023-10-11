@@ -22,7 +22,7 @@ setup(
     install_requires=[
         'pandas',
         'numpy',
-        'sklearn'
+        'scikit-learn'
     ],
     # package_data={'wpconnect': ['oracle_dlls/*.dll', 'queries/*.sql']},
     # include_package_data=True,
